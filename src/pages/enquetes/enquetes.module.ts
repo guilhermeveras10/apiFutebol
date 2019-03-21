@@ -1,0 +1,13 @@
+import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
+import { EnquetesPage } from './enquetes';
+
+@NgModule({
+  declarations: [
+    EnquetesPage,
+  ],
+  imports: [
+    IonicPageModule.forChild(EnquetesPage),
+  ],
+})
+export class EnquetesPageModule {}

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Vídeos</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center;">
+    <h1>Escolher miniatura do vídeo</h1>
+    <img *ngIf="video.miniatura" src="{{ video.miniatura }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <form ngNoForm>
+      <input id="miniatura" name="file" type="file" (change)="upload()">
+    </form>
+    <h1>Escolher arquivo do vídeo</h1>
+    <form ngNoForm>
+      <input id="video" name="file" type="file" (change)="uploadVideo()">
+    </form>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Título do video</ion-label>
+      <ion-input type="text" [(ngModel)]="video.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="save()">Salvar</button>
+    </ion-item>
+  </ion-list>
+  <table>
+    <thead>
+      <th>Miniatura</th>
+      <th>Título</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let video of videos">
+        <td>
+          <img [src]="video.miniatura">
+        </td>
+        <td>{{video.titulo}}</td>
+        <td>
+          <a href="#" *ngIf="video.status=='RETIRADO'" (click)="colocar(video.key)">Colocar</a>
+          <a href="#" *ngIf="video.status=='SUCESSO'" (click)="delete(video.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

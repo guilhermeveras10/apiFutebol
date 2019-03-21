@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Produtos da loja</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center;">
+    <h1>Escolher imagem</h1>
+    <img *ngIf="produto.url" src="{{ produto.url }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <form ngNoForm>
+      <input id="imgProduto" name="file" type="file" (change)="upload()">
+    </form>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome do produto</ion-label>
+      <ion-input type="text" [(ngModel)]="produto.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição do produto</ion-label>
+      <ion-input type="text" [(ngModel)]="produto.descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Valor do produto</ion-label>
+      <ion-input type="text" [(ngModel)]="produto.valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="save()">Salvar</button>
+    </ion-item>
+  </ion-list>
+  <table>
+    <thead>
+      <th>Foto</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <td>
+          <img [src]="produto.url">
+        </td>
+        <td>{{produto.nome}}</td>
+        <td>{{produto.descricao}}</td>
+        <td>{{produto.valor}}</td>
+        <td>
+          <a href="#" *ngIf="produto.status=='RETIRADO'" (click)="colocar(produto.key)">Colocar</a>
+          <a href="#" *ngIf="produto.status=='SUCESSO'" (click)="delete(produto.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

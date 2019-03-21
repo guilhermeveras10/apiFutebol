@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Torcedores</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <table>
+    <thead>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Telefone</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let torcedor of torcedores">
+        <td>
+          <a href="#" (click)="showPassengerInfo(torcedor.key)">{{torcedor.nome}}</a>
+        </td>
+        <td>{{torcedor.cpf}}</td>
+        <td>{{torcedor.telefone}}</td>
+        <td>
+          <a href="#" (click)="delete(torcedor.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

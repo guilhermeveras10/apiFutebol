@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Jogos</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center;">
+    <h1>Escolher escudo do oponente</h1>
+    <img *ngIf="jogo.escudooponente" src="{{ jogo.escudooponente }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <form ngNoForm>
+      <input id="escudooponente" name="file" type="file" (change)="upload()">
+    </form>
+    <h1>Escolher meu escudo</h1>
+    <img *ngIf="jogo.meuescudo" src="{{ jogo.meuescudo }}" style="width:100px;height:100px;" (click)="chooseFileOponente()">
+    <form ngNoForm>
+      <input id="meuescudo" name="file" type="file" (change)="uploadVideo()">
+    </form>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome do oponente</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.nomeDoOponente"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Nome do meu time</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.nomeDoTime"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Data do jogo</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.dataDoJogo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Horário do jogo</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.horarioDoJogo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Quantidade de gols do oponente</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.quantidadeDeGolsDoOponente"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Sua quantidade de gols</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.suaQuantidadeDeGols"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Valor do ingresso</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.valorDoIngresso"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="save()">Salvar</button>
+    </ion-item>
+  </ion-list>
+  <table>
+    <thead>
+      <th>Escudo do oponente</th>
+      <th>Nome do oponente</th>
+      <th>Sua quantidade de gols</th>
+      <th>Quantidade de gols do oponente</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let jogo of jogos">
+        <td>
+          <img [src]="jogo.escudooponente">
+        </td>
+        <td>{{jogo.nomeDoOponente}}</td>
+        <td><ion-input type="text" [(ngModel)]="jogo.suaQuantidadeDeGols"></ion-input></td>
+        <td><ion-input type="text" [(ngModel)]="jogo.quantidadeDeGolsDoOponente"></ion-input></td>
+        <td>
+          <a href="#" (click)="colocar(jogo.key,jogo)">Alterar dados</a>
+          <a href="#" *ngIf="jogo.status=='SUCESSO'" (click)="delete(jogo.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

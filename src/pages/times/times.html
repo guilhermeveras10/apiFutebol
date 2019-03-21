@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tabela</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center;">
+    <h1>Escolher imagem</h1>
+    <img *ngIf="time.meuescudo" src="{{ time.meuescudo }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <form ngNoForm>
+      <input id="imgTimes" name="file" type="file" (change)="upload()">
+    </form>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome do time</ion-label>
+      <ion-input type="text" [(ngModel)]="time.nomeDoTime"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>J</ion-label>
+      <ion-input type="text" [(ngModel)]="time.j"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Posição na tabela</ion-label>
+      <ion-input type="text" [(ngModel)]="time.posicao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Pontos na tabela</ion-label>
+      <ion-input type="text" [(ngModel)]="time.pts"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>SG</ion-label>
+      <ion-input type="text" [(ngModel)]="time.sg"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="save()">Salvar</button>
+    </ion-item>
+  </ion-list>
+  <table>
+    <thead>
+      <th>Foto</th>
+      <th>Nome</th>
+      <th>J</th>
+      <th>Posição</th>
+      <th>Número de pontos</th>
+      <th>SG</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let time of times">
+        <td>
+          <img [src]="time.meuescudo">
+        </td>
+        <td>{{time.nomeDoTime}}</td>
+        <td>{{time.j}}</td>
+        <td>{{time.posicao}}</td>
+        <td>{{time.pts}}</td>
+        <td>{{time.sg}}</td>
+        <td>
+          <a href="#" *ngIf="time.status=='RETIRADO'" (click)="colocar(time.key)">Colocar</a>
+          <a href="#" *ngIf="time.status=='SUCESSO'" (click)="delete(time.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

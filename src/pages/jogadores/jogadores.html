@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-navbar color="dark">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Jogadores</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div style="text-align: center;">
+      <h1>Escolher imagem</h1>
+      <img *ngIf="jogador.url" src="{{ jogador.url }}" style="width:100px;height:100px;" (click)="chooseFile()">
+      <form ngNoForm>
+        <input id="imgJogador" name="file" type="file" (change)="upload()">
+      </form>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Sobrenome</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.sobrenome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Posição do jogador</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.posicao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nascimento</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.nascimento"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nacionalidade</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.nacionalidade"></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label stacked>Local de nascimento</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.localdenascimento"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Idade</ion-label>
+        <ion-input type="text" [(ngModel)]="jogador.idade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button block (click)="save()">Salvar</button>
+      </ion-item>
+    </ion-list>
+    <table>
+      <thead>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Posição</th>
+        <th>Nascimento</th>
+        <th>Nacionalidade</th>
+        <th>Local de nascimento</th>
+        <th>Idade</th>
+        <th>Ações</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jogador of jogadores">
+          <td>
+            <img [src]="jogador.url">
+          </td>
+          <td>{{jogador.nome}}</td>
+          <td>{{jogador.sobrenome}}</td>
+          <td>{{jogador.posicao}}</td>
+          <td>{{jogador.nascimento}}</td>
+          <td>{{jogador.nacionalidade}}</td>
+          <td>{{jogador.localdenascimento}}</td>
+          <td>{{jogador.idade}}</td>
+          <td>
+            <a href="#" *ngIf="jogador.status=='RETIRADO'" (click)="colocar(jogador.key)">Colocar</a>
+            <a href="#" *ngIf="jogador.status=='SUCESSO'" (click)="delete(jogador.key)">Deletar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-content>

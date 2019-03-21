@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Notícias</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center;">
+    <h1>Escolher imagem</h1>
+    <img *ngIf="noticia.url" src="{{ noticia.url }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <form ngNoForm>
+      <input id="imgNoticia" name="file" type="file" (change)="upload()">
+    </form>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome da notícia</ion-label>
+      <ion-input type="text" [(ngModel)]="noticia.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição da notícia</ion-label>
+      <ion-textarea [(ngModel)]="noticia.descricao"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Notícia em destaque ?</ion-label>
+      <ion-select [(ngModel)]="noticia.destaque">
+        <ion-option>Sim</ion-option>
+        <ion-option>Não</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="save()">Salvar</button>
+    </ion-item>
+  </ion-list>
+  <table>
+    <thead>
+      <th>Foto</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let noticia of noticias">
+        <td>
+          <img [src]="noticia.url">
+        </td>
+        <td>{{noticia.nome}}</td>
+        <td>{{noticia.descricao}}</td>
+        <td>
+          <a href="#" *ngIf="noticia.status=='RETIRADO'" (click)="colocar(noticia.key)">Colocar</a>
+          <a href="#" *ngIf="noticia.status=='SUCESSO'" (click)="delete(noticia.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

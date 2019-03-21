@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar color="dark">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Artilheiros</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div style="text-align: center;">
+      <h1>Escolher imagem</h1>
+      <img *ngIf="artilheiro.url" src="{{ artilheiro.url }}" style="width:100px;height:100px;" (click)="chooseFile()">
+      <form ngNoForm>
+        <input id="imgArtilheiro" name="file" type="file" (change)="upload()">
+      </form>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="artilheiro.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Número de gols</ion-label>
+        <ion-textarea [(ngModel)]="artilheiro.gols"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Posição do jogador</ion-label>
+        <ion-input type="text" [(ngModel)]="artilheiro.posicao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button block (click)="save()">Salvar</button>
+      </ion-item>
+    </ion-list>
+    <table>
+      <thead>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Número de gols</th>
+        <th>Posição do jogador</th>
+        <th>Ações</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let artilheiro of artilheiros">
+          <td>
+            <img [src]="artilheiro.url">
+          </td>
+          <td>{{artilheiro.nome}}</td>
+          <td>{{artilheiro.gols}}</td>
+          <td>{{artilheiro.posicao}}</td>
+          <td>
+            <a href="#" *ngIf="artilheiro.status=='RETIRADO'" (click)="colocar(artilheiro.key)">Colocar</a>
+            <a href="#" *ngIf="artilheiro.status=='SUCESSO'" (click)="delete(artilheiro.key)">Deletar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-content>

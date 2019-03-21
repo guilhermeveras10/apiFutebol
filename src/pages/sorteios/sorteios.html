@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sorteios</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center;">
+    <h1>Escolher imagem</h1>
+    <img *ngIf="sorteio.url" src="{{ sorteio.url }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <form ngNoForm>
+      <input id="imgSorteio" name="file" type="file" (change)="upload()">
+    </form>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome do sorteio</ion-label>
+      <ion-input type="text" [(ngModel)]="sorteio.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Número de pontos</ion-label>
+      <ion-input type="text" [(ngModel)]="sorteio.pontos"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text" [(ngModel)]="sorteio.descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="save()">Salvar</button>
+    </ion-item>
+  </ion-list>
+  <table>
+    <thead>
+      <th>Foto</th>
+      <th>Nome</th>
+      <th>Número de pontos</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sorteio of sorteios">
+        <td>
+          <img [src]="sorteio.url">
+        </td>
+        <td>{{sorteio.nome}}</td>
+        <td>{{sorteio.pontos}}</td>
+        <td>{{sorteio.descricao}}</td>
+        <td>
+          <a href="#" *ngIf="sorteio.status=='RETIRADO'" (click)="colocar(sorteio.key)">Colocar</a>
+          <a href="#" *ngIf="sorteio.status=='SUCESSO'" (click)="delete(sorteio.key)">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

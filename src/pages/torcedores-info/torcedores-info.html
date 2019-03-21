@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{torcedor.nome}}</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="close()">Fechar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="torcedor.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>CPF</ion-label>
+        <ion-input type="text" [(ngModel)]="torcedor.cpf"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Endereço</ion-label>
+        <ion-input type="text" [(ngModel)]="torcedor.endereco"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Número</ion-label>
+        <ion-input type="text" [(ngModel)]="torcedor.numero"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Número de recados</ion-label>
+        <ion-input type="text" [(ngModel)]="torcedor.recados"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Telefone</ion-label>
+        <ion-input type="text" [(ngModel)]="torcedor.telefone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button block (click)="updateUserInfo()">Update</button>
+      </ion-item>
+</ion-content>
