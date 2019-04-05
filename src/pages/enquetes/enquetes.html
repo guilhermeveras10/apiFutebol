@@ -49,7 +49,6 @@
         <td>{{enquete.opcao3}}</td>
         <td>{{enquete.opcao4}}</td>
         <td>
-          <a href="#" *ngIf="enquete.status=='RETIRADO'" (click)="colocar(enquete.key)">Colocar</a>
           <a href="#" *ngIf="enquete.status=='SUCESSO'" (click)="delete(enquete.key)">Deletar</a>
         </td>
       </tr>

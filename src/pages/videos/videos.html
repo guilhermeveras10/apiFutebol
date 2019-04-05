@@ -40,7 +40,6 @@
         </td>
         <td>{{video.titulo}}</td>
         <td>
-          <a href="#" *ngIf="video.status=='RETIRADO'" (click)="colocar(video.key)">Colocar</a>
           <a href="#" *ngIf="video.status=='SUCESSO'" (click)="delete(video.key)">Deletar</a>
         </td>
       </tr>

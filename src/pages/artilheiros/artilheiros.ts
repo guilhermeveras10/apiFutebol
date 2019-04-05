@@ -68,10 +68,7 @@ export class ArtilheirosPage {
   }
 
   delete(id){
-    firebase.database().ref('artilheiros/'+id).update({ status: 'RETIRADO'});
+    firebase.database().ref('artilheiros/'+id).remove();
   }
 
-  colocar(id){
-    firebase.database().ref('artilheiros/'+id).update({ status: 'SUCESSO'});
-  }
 }

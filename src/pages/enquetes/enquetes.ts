@@ -50,10 +50,7 @@ export class EnquetesPage {
   }
 
   delete(id){
-    firebase.database().ref('enquetes/'+id).update({ status: 'RETIRADO'});
+    firebase.database().ref('enquetes/'+id).remove();
   }
 
-  colocar(id){
-    firebase.database().ref('enquetes/'+id).update({ status: 'SUCESSO'});
-  }
 }

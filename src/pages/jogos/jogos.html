@@ -9,17 +9,17 @@
 <ion-content>
   <div style="text-align: center;">
     <h1>Escolher escudo do oponente</h1>
-    <!-- <img *ngIf="jogo.escudooponente" src="{{ jogo.escudooponente }}" style="width:100px;height:100px;" (click)="chooseFile()"> -->
+    <img *ngIf="jogo.escudooponente" src="{{ jogo.escudooponente }}" style="width:100px;height:100px;" (click)="chooseFile()">
     <form ngNoForm>
       <input id="escudooponente" name="file" type="file" (change)="upload()">
     </form>
     <h1>Escolher meu escudo</h1>
-    <!-- <img *ngIf="jogo.meuescudo" src="{{ jogo.meuescudo }}" style="width:100px;height:100px;" (click)="chooseFileOponente()"> -->
+    <img *ngIf="jogo.meuescudo" src="{{ jogo.meuescudo }}" style="width:100px;height:100px;" (click)="chooseFileOponente()">
     <form ngNoForm>
       <input id="meuescudo" name="file" type="file" (change)="uploadVideo()">
     </form>
     <h1>Escolher foto do campeonato</h1>
-    <!-- <img *ngIf="jogo.campeonato" src="{{ jogo.campeonato }}" style="width:100px;height:100px;" (click)="chooseFileCampeonato()"> -->
+    <img *ngIf="jogo.campeonato" src="{{ jogo.campeonato }}" style="width:100px;height:100px;" (click)="chooseFileCampeonato()">
     <form ngNoForm>
       <input id="campeonato" name="file" type="file" (change)="uploadCampeonato()">
     </form>

@@ -48,7 +48,6 @@
         <td>{{sorteio.pontos}}</td>
         <td>{{sorteio.descricao}}</td>
         <td>
-          <a href="#" *ngIf="sorteio.status=='RETIRADO'" (click)="colocar(sorteio.key)">Colocar</a>
           <a href="#" *ngIf="sorteio.status=='SUCESSO'" (click)="delete(sorteio.key)">Deletar</a>
         </td>
       </tr>

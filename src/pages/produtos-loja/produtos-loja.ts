@@ -69,10 +69,7 @@ export class ProdutosLojaPage {
   }
 
   delete(id){
-    firebase.database().ref('produtosLoja/'+id).update({ status: 'RETIRADO'});
+    firebase.database().ref('produtosLoja/'+id).remove();
   }
 
-  colocar(id){
-    firebase.database().ref('produtosLoja/'+id).update({ status: 'SUCESSO'});
-  }
 }

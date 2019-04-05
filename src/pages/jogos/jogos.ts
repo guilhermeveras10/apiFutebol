@@ -51,7 +51,6 @@ export class JogosPage {
       iRef.put(selectedFile).then((snapshot) => {
         loading.dismiss();
         this.jogo.escudooponente = snapshot.downloadURL;
-        this.jogo.meuescudo = snapshot.downloadURL;
         this.jogo.timestamp = firebase.database.ServerValue.TIMESTAMP;
         this.jogo.status = 'SUCESSO';
         // this.uploadVideo();
@@ -70,6 +69,7 @@ export class JogosPage {
       let iRef = storageRef.child(path);
       iRef.put(selectedFile).then((snapshot) => {
         loading.dismiss();
+        this.jogo.campeonato = snapshot.downloadURL;
       });
     }
   }
@@ -85,7 +85,7 @@ export class JogosPage {
       let iRef = storageRef.child(path);
       iRef.put(selectedFile).then((snapshot) => {
         loading.dismiss();
-        // this.uploadCampeonato();
+        this.jogo.meuescudo = snapshot.downloadURL;
       });
     }
   }
@@ -106,7 +106,7 @@ export class JogosPage {
   }
 
   delete(id){
-    firebase.database().ref('jogos/'+id).update({ status: 'RETIRADO'});
+    firebase.database().ref('jogos/'+id).remove();
   }
 
   colocar(id,jogo){

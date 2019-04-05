@@ -52,7 +52,6 @@
         <td>{{produto.descricao}}</td>
         <td>{{produto.valor}}</td>
         <td>
-          <a href="#" *ngIf="produto.status=='RETIRADO'" (click)="colocar(produto.key)">Colocar</a>
           <a href="#" *ngIf="produto.status=='SUCESSO'" (click)="delete(produto.key)">Deletar</a>
         </td>
       </tr>

@@ -48,7 +48,6 @@
           <td>{{artilheiro.gols}}</td>
           <td>{{artilheiro.posicao}}</td>
           <td>
-            <a href="#" *ngIf="artilheiro.status=='RETIRADO'" (click)="colocar(artilheiro.key)">Colocar</a>
             <a href="#" *ngIf="artilheiro.status=='SUCESSO'" (click)="delete(artilheiro.key)">Deletar</a>
           </td>
         </tr>

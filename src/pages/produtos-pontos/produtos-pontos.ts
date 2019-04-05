@@ -69,10 +69,6 @@ export class ProdutosPontosPage {
   }
 
   delete(id){
-    firebase.database().ref('produtosPontos/'+id).update({ status: 'RETIRADO'});
-  }
-
-  colocar(id){
-    firebase.database().ref('produtosPontos/'+id).update({ status: 'SUCESSO'});
+    firebase.database().ref('produtosPontos/'+id).remove();
   }
 }

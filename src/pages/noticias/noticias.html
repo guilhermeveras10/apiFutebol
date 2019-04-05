@@ -49,7 +49,6 @@
         <td>{{noticia.nome}}</td>
         <td>{{noticia.descricao}}</td>
         <td>
-          <a href="#" *ngIf="noticia.status=='RETIRADO'" (click)="colocar(noticia.key)">Colocar</a>
           <a href="#" *ngIf="noticia.status=='SUCESSO'" (click)="delete(noticia.key)">Deletar</a>
         </td>
       </tr>

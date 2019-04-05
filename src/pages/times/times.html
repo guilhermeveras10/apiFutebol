@@ -69,7 +69,6 @@
         </td>
         <td>
           <a href="#" (click)="altera(time.key,time)">Alterar dados</a>
-          <a href="#" *ngIf="time.status=='RETIRADO'" (click)="colocar(time.key)">Colocar</a>
           <a href="#" *ngIf="time.status=='SUCESSO'" (click)="delete(time.key)">Deletar</a>
         </td>
       </tr>

@@ -69,13 +69,9 @@ export class TimesPage {
   }
 
   delete(id){
-    firebase.database().ref('times/'+id).update({ status: 'RETIRADO'});
+    firebase.database().ref('times/'+id).remove();
   }
 
-  colocar(id){
-    firebase.database().ref('times/'+id).update({ status: 'SUCESSO'});
-  }
-  
   altera(id,time){
     firebase.database().ref('times/'+id).update(time);
   }

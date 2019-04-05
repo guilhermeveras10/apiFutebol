@@ -69,10 +69,6 @@ export class SorteiosPage {
   }
 
   delete(id){
-    firebase.database().ref('sorteios/'+id).update({ status: 'RETIRADO'});
-  }
-
-  colocar(id){
-    firebase.database().ref('sorteios/'+id).update({ status: 'SUCESSO'});
+    firebase.database().ref('sorteios/'+id).remove();
   }
 }

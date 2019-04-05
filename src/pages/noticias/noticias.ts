@@ -69,10 +69,6 @@ export class NoticiasPage {
   }
 
   delete(id){
-    firebase.database().ref('noticias/'+id).update({ status: 'RETIRADO'});
-  }
-
-  colocar(id){
-    firebase.database().ref('noticias/'+id).update({ status: 'SUCESSO'});
+    firebase.database().ref('noticias/'+id).remove();
   }
 }

@@ -85,10 +85,6 @@ export class VideosPage {
   }
 
   delete(id){
-    firebase.database().ref('videos/'+id).update({ status: 'RETIRADO'});
-  }
-
-  colocar(id){
-    firebase.database().ref('videos/'+id).update({ status: 'SUCESSO'});
+    firebase.database().ref('videos/'+id).remove()s;
   }
 }
