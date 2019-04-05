@@ -28,6 +28,10 @@
       <ion-input type="text" [(ngModel)]="produto.valor"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label stacked>Pontos que o produto vale</ion-label>
+      <ion-input type="text" [(ngModel)]="produto.pontos"></ion-input>
+    </ion-item>
+    <ion-item>
       <button ion-button block (click)="save()">Salvar</button>
     </ion-item>
   </ion-list>

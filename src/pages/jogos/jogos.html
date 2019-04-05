@@ -9,14 +9,19 @@
 <ion-content>
   <div style="text-align: center;">
     <h1>Escolher escudo do oponente</h1>
-    <img *ngIf="jogo.escudooponente" src="{{ jogo.escudooponente }}" style="width:100px;height:100px;" (click)="chooseFile()">
+    <!-- <img *ngIf="jogo.escudooponente" src="{{ jogo.escudooponente }}" style="width:100px;height:100px;" (click)="chooseFile()"> -->
     <form ngNoForm>
       <input id="escudooponente" name="file" type="file" (change)="upload()">
     </form>
     <h1>Escolher meu escudo</h1>
-    <img *ngIf="jogo.meuescudo" src="{{ jogo.meuescudo }}" style="width:100px;height:100px;" (click)="chooseFileOponente()">
+    <!-- <img *ngIf="jogo.meuescudo" src="{{ jogo.meuescudo }}" style="width:100px;height:100px;" (click)="chooseFileOponente()"> -->
     <form ngNoForm>
       <input id="meuescudo" name="file" type="file" (change)="uploadVideo()">
+    </form>
+    <h1>Escolher foto do campeonato</h1>
+    <!-- <img *ngIf="jogo.campeonato" src="{{ jogo.campeonato }}" style="width:100px;height:100px;" (click)="chooseFileCampeonato()"> -->
+    <form ngNoForm>
+      <input id="campeonato" name="file" type="file" (change)="uploadCampeonato()">
     </form>
   </div>
   <ion-list>
@@ -24,6 +29,10 @@
       <ion-label stacked>Nome do oponente</ion-label>
       <ion-input type="text" [(ngModel)]="jogo.nomeDoOponente"></ion-input>
     </ion-item>
+    <ion-item>
+        <ion-label stacked>Nome do campeonato</ion-label>
+        <ion-input type="text" [(ngModel)]="jogo.nomeDoCampeonato"></ion-input>
+      </ion-item>
     <ion-item>
       <ion-label stacked>Nome do meu time</ion-label>
       <ion-input type="text" [(ngModel)]="jogo.nomeDoTime"></ion-input>
@@ -45,8 +54,28 @@
       <ion-input type="text" [(ngModel)]="jogo.suaQuantidadeDeGols"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Valor do ingresso</ion-label>
-      <ion-input type="text" [(ngModel)]="jogo.valorDoIngresso"></ion-input>
+      <ion-label stacked>Valor do ingresso sessao A</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.valorDoIngressoA"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Valor do ingresso sessao B</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.valorDoIngressoB"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Valor do ingresso sessao C</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.valorDoIngressoC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Pontos do ingresso sessao A</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.pontosDoIngressoA"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Pontos do ingresso sessao B</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.pontosDoIngressoB"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Pontos do ingresso sessao C</ion-label>
+      <ion-input type="text" [(ngModel)]="jogo.pontosDoIngressoC"></ion-input>
     </ion-item>
     <ion-item>
       <button ion-button block (click)="save()">Salvar</button>

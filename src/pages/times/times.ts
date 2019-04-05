@@ -75,4 +75,8 @@ export class TimesPage {
   colocar(id){
     firebase.database().ref('times/'+id).update({ status: 'SUCESSO'});
   }
+  
+  altera(id,time){
+    firebase.database().ref('times/'+id).update(time);
+  }
 }

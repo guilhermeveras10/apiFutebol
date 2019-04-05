@@ -27,7 +27,7 @@ export class JogosPage {
   }
 
   save() {
-    this.upload();
+    // this.upload();
     firebase.database().ref('jogos/').push().update(this.jogo).then(data => {
       this.displayToast("Upado com sucesso")
     });
@@ -36,6 +36,8 @@ export class JogosPage {
   chooseFile() { document.getElementById('escudooponente').click(); }
 
   chooseFileOponente() { document.getElementById('meuescudo').click(); }
+
+  chooseFileCampeonato() { document.getElementById('campeonato').click(); }
 
   upload() {
     // Create a root reference
@@ -52,7 +54,22 @@ export class JogosPage {
         this.jogo.meuescudo = snapshot.downloadURL;
         this.jogo.timestamp = firebase.database.ServerValue.TIMESTAMP;
         this.jogo.status = 'SUCESSO';
-        this.uploadVideo();
+        // this.uploadVideo();
+      });
+    }
+  }
+
+  uploadCampeonato() {
+    // Create a root reference
+    let storageRef = firebase.storage().ref();
+    let loading = this.loadingCtrl.create({ content: 'Por favor aguarde...' });
+    loading.present();
+
+    for (let selectedFile of [(<HTMLInputElement>document.getElementById('campeonato')).files[0]]) {
+      let path = '/jogos/' + Date.now() + `${selectedFile.name}`;
+      let iRef = storageRef.child(path);
+      iRef.put(selectedFile).then((snapshot) => {
+        loading.dismiss();
       });
     }
   }
@@ -68,6 +85,7 @@ export class JogosPage {
       let iRef = storageRef.child(path);
       iRef.put(selectedFile).then((snapshot) => {
         loading.dismiss();
+        // this.uploadCampeonato();
       });
     }
   }

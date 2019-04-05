@@ -55,11 +55,20 @@
           <img [src]="time.meuescudo">
         </td>
         <td>{{time.nomeDoTime}}</td>
-        <td>{{time.j}}</td>
-        <td>{{time.posicao}}</td>
-        <td>{{time.pts}}</td>
-        <td>{{time.sg}}</td>
         <td>
+          <ion-input type="text" [(ngModel)]="time.j"></ion-input>
+        </td>
+        <td>
+          <ion-input type="text" [(ngModel)]="time.posicao"></ion-input>
+        </td>
+        <td>
+          <ion-input type="text" [(ngModel)]="time.pts"></ion-input>
+        </td>
+        <td>
+          <ion-input type="text" [(ngModel)]="time.sg"></ion-input>
+        </td>
+        <td>
+          <a href="#" (click)="altera(time.key,time)">Alterar dados</a>
           <a href="#" *ngIf="time.status=='RETIRADO'" (click)="colocar(time.key)">Colocar</a>
           <a href="#" *ngIf="time.status=='SUCESSO'" (click)="delete(time.key)">Deletar</a>
         </td>
