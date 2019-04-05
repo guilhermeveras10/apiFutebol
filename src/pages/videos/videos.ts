@@ -85,6 +85,6 @@ export class VideosPage {
   }
 
   delete(id){
-    firebase.database().ref('videos/'+id).remove()s;
+    firebase.database().ref('videos/'+id).remove();
   }
 }

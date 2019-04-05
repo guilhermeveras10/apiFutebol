@@ -376,6 +376,8 @@ var JogosPage = (function () {
             iRef.put(selectedFile).then(function (snapshot) {
                 loading.dismiss();
                 _this.jogo.escudooponente = snapshot.downloadURL;
+                _this.jogo.meuescudo = snapshot.downloadURL;
+                _this.jogo.campeonato = snapshot.downloadURL;
                 _this.jogo.timestamp = __WEBPACK_IMPORTED_MODULE_2_firebase__["database"].ServerValue.TIMESTAMP;
                 _this.jogo.status = 'SUCESSO';
                 // this.uploadVideo();
@@ -383,7 +385,6 @@ var JogosPage = (function () {
         }
     };
     JogosPage.prototype.uploadCampeonato = function () {
-        var _this = this;
         // Create a root reference
         var storageRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["storage"]().ref();
         var loading = this.loadingCtrl.create({ content: 'Por favor aguarde...' });
@@ -394,12 +395,10 @@ var JogosPage = (function () {
             var iRef = storageRef.child(path);
             iRef.put(selectedFile).then(function (snapshot) {
                 loading.dismiss();
-                _this.jogo.campeonato = snapshot.downloadURL;
             });
         }
     };
     JogosPage.prototype.uploadVideo = function () {
-        var _this = this;
         // Create a root reference
         var storageRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["storage"]().ref();
         var loading = this.loadingCtrl.create({ content: 'Por favor aguarde...' });
@@ -410,7 +409,7 @@ var JogosPage = (function () {
             var iRef = storageRef.child(path);
             iRef.put(selectedFile).then(function (snapshot) {
                 loading.dismiss();
-                _this.jogo.meuescudo = snapshot.downloadURL;
+                // this.uploadCampeonato();
             });
         }
     };
@@ -429,7 +428,7 @@ var JogosPage = (function () {
         this.toastCtrl.create({ duration: 2000, message: message }).present();
     };
     JogosPage.prototype.delete = function (id) {
-        __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('jogos/' + id).remove();
+        __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('jogos/' + id).update({ status: 'RETIRADO' });
     };
     JogosPage.prototype.colocar = function (id, jogo) {
         __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('jogos/' + id).update(jogo);
@@ -1305,18 +1304,16 @@ var VideosPage = (function () {
         this.toastCtrl.create({ duration: 2000, message: message }).present();
     };
     VideosPage.prototype.delete = function (id) {
-        __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('videos/' + id).update({ status: 'RETIRADO' });
-    };
-    VideosPage.prototype.colocar = function (id) {
-        __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('videos/' + id).update({ status: 'SUCESSO' });
+        __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('videos/' + id).remove();
     };
     VideosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-videos',template:/*ion-inline-start:"/home/guilherme/workspace/apiFutebol/src/pages/videos/videos.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Vídeos</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <div style="text-align: center;">\n    <h1>Escolher miniatura do vídeo</h1>\n    <img *ngIf="video.miniatura" src="{{ video.miniatura }}" style="width:100px;height:100px;" (click)="chooseFile()">\n    <form ngNoForm>\n      <input id="miniatura" name="file" type="file" (change)="upload()">\n    </form>\n    <h1>Escolher arquivo do vídeo</h1>\n    <form ngNoForm>\n      <input id="video" name="file" type="file" (change)="uploadVideo()">\n    </form>\n  </div>\n  <ion-list>\n    <ion-item>\n      <ion-label stacked>Título do video</ion-label>\n      <ion-input type="text" [(ngModel)]="video.titulo"></ion-input>\n    </ion-item>\n    <ion-item>\n      <button ion-button block (click)="save()">Salvar</button>\n    </ion-item>\n  </ion-list>\n  <table>\n    <thead>\n      <th>Miniatura</th>\n      <th>Título</th>\n      <th>Ações</th>\n    </thead>\n    <tbody>\n      <tr *ngFor="let video of videos">\n        <td>\n          <img [src]="video.miniatura">\n        </td>\n        <td>{{video.titulo}}</td>\n        <td>\n          <a href="#" *ngIf="video.status==\'SUCESSO\'" (click)="delete(video.key)">Deletar</a>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</ion-content>'/*ion-inline-end:"/home/guilherme/workspace/apiFutebol/src/pages/videos/videos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _e || Object])
     ], VideosPage);
     return VideosPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=videos.js.map
